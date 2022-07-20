@@ -1,0 +1,42 @@
+---
+
+- name: apt install deps
+  become: yes
+  apt:
+    state: latest
+    name:
+      - vim 
+      - zsh
+      - fzf
+      - ncal
+      - python3-pip
+  when: ansible_pkg_mgr == 'apt'
+  tags:
+    - basics
+
+- name: apt install modern-unix
+  become: yes
+  apt:
+    state: latest
+    name:
+      - bat
+  when: ansible_pkg_mgr == 'apt'
+  tags:
+    - modern
+- name: Create symbolic link 
+  file:
+    src: "/usr/bin/batcat"
+    dest: "/usr/local/sbin/bat"
+    state: link
+  become: yes
+
+- name: Download TFSwitch
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh
+    validate_certs: no
+    dest: /tmp/tf_install.sh
+
+- name: Run TFSwitch installer
+  ansible.builtin.shell:
+    cmd: cat /tmp/tf_install.sh | sudo sh -s
+

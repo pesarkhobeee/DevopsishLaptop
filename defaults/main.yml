@@ -1,0 +1,20 @@
+---
+
+# minimal, full
+vimrc_mode : "full"
+
+git_repo: 'https://github.com/vim/vim.git'
+git_version: master
+git_dest: /tmp/vim
+
+configure_prefix: /usr/local
+# huge, big, normal small, tiny
+configure_with_features: huge
+
+requirements_path: files/requirements.txt
+
+config_root: "~/.vim"
+# change this to your own vimrc if you like
+config_src: "files/vimrc"
+config_dest: "{{config_root}}/vimrc"
+vimplug_dest_path: "{{config_root}}/autoload"

@@ -1,0 +1,24 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: vim
+  author: guoqiao
+  description: >
+    clone, compile and install latest vim, install vimrc and plugins.
+  company: Catalyst IT
+
+  license: MIT
+
+  min_ansible_version: 2.5
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags:
+    - vim
+    - vimrc
+    - vundle
+    - youcompleteme
