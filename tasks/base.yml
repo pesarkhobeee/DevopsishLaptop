@@ -9,6 +9,8 @@
       - zsh
       - fzf
       - ncal
+      - curl
+      - jq
       - python3-pip
   when: ansible_pkg_mgr == 'apt'
   tags:
@@ -29,14 +31,3 @@
     dest: "/usr/local/sbin/bat"
     state: link
   become: yes
-
-- name: Download TFSwitch
-  ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh
-    validate_certs: no
-    dest: /tmp/tf_install.sh
-
-- name: Run TFSwitch installer
-  ansible.builtin.shell:
-    cmd: cat /tmp/tf_install.sh | sudo sh -s
-

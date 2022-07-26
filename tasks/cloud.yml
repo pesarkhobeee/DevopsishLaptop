@@ -1,0 +1,12 @@
+---
+
+- name: Download TFSwitch
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh
+    validate_certs: no
+    dest: /tmp/tf_install.sh
+
+- name: Run TFSwitch installer
+  ansible.builtin.shell:
+    cmd: cat /tmp/tf_install.sh | sudo sh -s
+

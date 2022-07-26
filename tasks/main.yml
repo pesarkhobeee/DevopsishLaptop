@@ -1,25 +1,44 @@
 ---
 
-- name: display compile message
+- name: display base message
   debug:
     msg:
       - '***********************************************************'
       - '***********************************************************'
       - '***********************************************************'
       - '***                                                     ***'
-      - '*** We are going to compile and install Vim from source ***'
-      - '*** Warning: This will try to unistall Vim first        ***'
+      - '*** We are going to install base software               ***'
       - '***                                                     ***'
       - '***********************************************************'
       - '***********************************************************'
       - '***********************************************************'
   tags:
-    - compile
+    - base
 
-- name: include task from comile.yml
-  include_tasks: compile.yml
+- name: include task from base.yml
+  include_tasks: base.yml
   tags:
-    - compile
+    - base
+
+- name: display cloud message
+  debug:
+    msg:
+      - '***********************************************************'
+      - '***********************************************************'
+      - '***********************************************************'
+      - '***                                                     ***'
+      - '*** We are going to install cloud related software      ***'
+      - '***                                                     ***'
+      - '***********************************************************'
+      - '***********************************************************'
+      - '***********************************************************'
+  tags:
+    - cloud
+
+- name: include task from cloud.yml
+  include_tasks: cloud.yml
+  tags:
+    - cloud
 
 - name: display vimrc message
   debug:
