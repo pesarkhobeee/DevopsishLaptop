@@ -12,6 +12,9 @@
       - curl
       - jq
       - python3-pip
+      - apt-transport-https
+      - ca-certificates
+      - gnupg
   when: ansible_pkg_mgr == 'apt'
   tags:
     - basics

@@ -10,3 +10,23 @@
   ansible.builtin.shell:
     cmd: cat /tmp/tf_install.sh | sudo sh -s
 
+- name: add google-cloud-cli apt-key
+  become: yes
+  apt_key: 
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg 
+    state: present 
+
+- name: add google-cloud-cli apt repository
+  become: yes
+  apt_repository: 
+    repo: 'deb https://packages.cloud.google.com/apt cloud-sdk main' 
+    state: present 
+    filename: google-cloud-sdk 
+    update_cache: yes
+
+- name: install google-cloud-cli
+  become: yes
+  apt: 
+    name: google-cloud-cli
+    state: present
+    update_cache: yes
