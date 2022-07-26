@@ -3,3 +3,4 @@ pylint
 yamllint
 pyflakes
 autopep8
+pre-commit

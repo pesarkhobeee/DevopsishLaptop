@@ -19,6 +19,10 @@
   include_tasks: base.yml
   tags:
     - base
+- name: include task from requirements.yml
+  include_tasks: requirements.yml
+  tags:
+    - base
 
 - name: display cloud message
   debug:

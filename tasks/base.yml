@@ -7,7 +7,6 @@
     name:
       - vim 
       - zsh
-      - fzf
       - ncal
       - curl
       - jq
@@ -25,6 +24,8 @@
     state: latest
     name:
       - bat
+      - fzf
+      - silversearcher-ag
   when: ansible_pkg_mgr == 'apt'
   tags:
     - modern
