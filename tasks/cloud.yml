@@ -10,6 +10,16 @@
   ansible.builtin.shell:
     cmd: cat /tmp/tf_install.sh | sudo sh -s
 
+- name: Download TFLint
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh
+    validate_certs: no
+    dest: /tmp/tf_lint.sh
+
+- name: Run TFLint installer
+  ansible.builtin.shell:
+    cmd: cat /tmp/tf_lint.sh | sudo sh -s
+
 - name: add google-cloud-cli apt-key
   become: yes
   apt_key: 
