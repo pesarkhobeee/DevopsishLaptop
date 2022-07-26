@@ -30,3 +30,24 @@
     name: google-cloud-cli
     state: present
     update_cache: yes
+
+- name: add github-cli apt-key
+  become: yes
+  apt_key: 
+    url: https://cli.github.com/packages/githubcli-archive-keyring.gpg 
+    state: present 
+
+- name: add github-cli apt repository
+  become: yes
+  apt_repository: 
+    repo: 'deb https://cli.github.com/packages stable main' 
+    state: present 
+    filename: github-cli 
+    update_cache: yes
+
+- name: install github-cli
+  become: yes
+  apt: 
+    name: gh
+    state: present
+    update_cache: yes
