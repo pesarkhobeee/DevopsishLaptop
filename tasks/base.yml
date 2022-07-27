@@ -14,6 +14,9 @@
       - apt-transport-https
       - ca-certificates
       - gnupg
+      - gitk
+      - tree
+      - fonts-powerline
   when: ansible_pkg_mgr == 'apt'
   tags:
     - basics
@@ -35,3 +38,19 @@
     dest: "/usr/local/sbin/bat"
     state: link
   become: yes
+
+- name: display shell message
+  debug:
+    msg:
+      - '*******************************************************************************************************'
+      - '*******************************************************************************************************'
+      - '                                                                                                       '
+      - ' Run the following commands if they needed:                                                            '
+      - '   curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash         '
+      - '   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k                    '
+      - '   echo  "source ~/powerlevel10k/powerlevel10k.zsh-themer" >>~/.zshrc                                  '
+      - '                                                                                                       '
+      - '                                                                                                       '
+      - '                                                                                                       '
+      - '*******************************************************************************************************'
+      - '*******************************************************************************************************'
