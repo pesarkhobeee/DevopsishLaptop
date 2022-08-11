@@ -16,6 +16,7 @@
       - gnupg
       - gitk
       - golang
+      - guake
       - tree
       - fonts-powerline
   when: ansible_pkg_mgr == 'apt'
