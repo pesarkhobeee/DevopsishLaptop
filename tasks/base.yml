@@ -15,6 +15,7 @@
       - ca-certificates
       - gnupg
       - gitk
+      - golang
       - tree
       - fonts-powerline
   when: ansible_pkg_mgr == 'apt'
