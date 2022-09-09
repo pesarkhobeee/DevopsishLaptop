@@ -1,0 +1,71 @@
+---
+
+- name: Ensures {{config_root}} dir exists
+  file: 
+    path: "{{config_root}}"
+    state: directory
+    recurse: yes
+  tags:
+    - vimrc
+
+- name: stat ~/.vimrc
+  stat: path=~/.vimrc
+  register: vimrc_stat
+  tags:
+    - vimrc
+
+- name: Move ~/.vimrc to vimrc.old
+  command: mv ~/.vimrc ~/.vimrc.old
+  when: vimrc_stat.stat.exists
+  tags:
+    - vimrc
+
+- name: copy the vimrc if not exists
+  copy:
+    src: "{{config_src}}"
+    dest: "{{config_dest}}"
+    force: no
+  tags:
+    - vimrc
+
+- name: Make sure  "{{ vimplug_dest_path}}" dir exists
+  file:
+    path: "{{ vimplug_dest_path}}"
+    state: directory
+    recurse: yes
+  tags:
+    - plug
+    - vimrc
+
+- name: Get the vim Plug 
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest:  '{{vimplug_dest_path}}/plug.vim'
+  tags:
+    - plug
+    - vimrc
+
+- name: Run vimPlug install
+  shell: vim -c ":PlugInstall gruvbox syntastic nerdtree" -c q -c q 
+  tags:
+    - plug
+    - vimrc
+  register: plug
+
+- name: display post install message
+  debug:
+    msg:
+      - '***********************************************************'
+      - '***********************************************************'
+      - '***********************************************************'
+      - '***                                                     ***'
+      - '*** Things left to do:                                  ***'
+      - '***   - import your vimrc settings if you have          ***'
+      - '***   - run :PlugInstall to install all the plugins     ***'
+      - '***                                                     ***'
+      - '***********************************************************'
+      - '***********************************************************'
+      - '***********************************************************'
+  tags:
+    - plug
+    - vimrc

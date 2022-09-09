@@ -49,9 +49,10 @@ mkdir vim_DIY
 cd vim_DIY
 git clone https://github.com/pesarkhobeee/DevopsishLaptop
 cat >> DIY.yml <<EOF
-- name: vim role
+- name: DevopsishLaptop role
   hosts: 127.0.0.1
   connection: local
+  ignore_errors: yes
   roles:
     - role: DevopsishLaptop
 EOF

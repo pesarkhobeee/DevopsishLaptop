@@ -59,10 +59,10 @@
   tags:
     - vimrc
 
-      # - name: include task from vimrc.yml
-      # include_tasks: vimrc.yml
-      # tags:
-      # - vimrc
+- name: include task from vimrc.yml
+  include_tasks: vimrc.yml
+  tags:
+  - vimrc
 
 - name: display shell message
   debug:
