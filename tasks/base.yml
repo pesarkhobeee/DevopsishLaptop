@@ -6,6 +6,8 @@
     state: latest
     name:
       - vim 
+      - vim-gtk
+      - mplayer
       - zsh
       - ncal
       - curl
